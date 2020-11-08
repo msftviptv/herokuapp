@@ -1,0 +1,14 @@
+Options +FollowSymlinks
+RewriteEngine On
+RewriteBase /
+RewriteRule ^(.+).mp4$ /yb.php [NC,L]
+RewriteRule ^(.+).mp4$ /vid.php [NC,L]
+RewriteRule ^(.+).mp4$ /moshahda.php [NC,L]
+RewriteRule ^(.+).mp4$ /egy.php [NC,L]
+RewriteRule ^(.+).m3u8$ /$1.php [NC,L]
+RewriteRule ^(.+).m3u$ /file.php [NC,L]
+RewriteRule ^/?live/([^/]+)$ live.php?ch=$1 [NC,L]
+RewriteRule ^([^/\.]+)/([^/\.]+)?$ new.php?ch=$1&user=$2
+# HTID:14840093: DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES BELOW
+php_value display_errors 1
+# DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES ABOVE HTID:14840093:
