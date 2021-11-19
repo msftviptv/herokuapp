@@ -11,6 +11,3 @@ RewriteRule ^(.+).m3u8$ /$1.php [NC,L]
 RewriteRule ^(.+).m3u$ /file.php [NC,L]
 RewriteRule ^/?live/([^/]+)$ live.php?ch=$1 [NC,L]
 RewriteRule ^([^/\.]+)/([^/\.]+)$ new.php?user=$1&ch=$2 [NC,L]
-# HTID:14840093: DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES BELOW
-php_value display_errors 1
-# DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES ABOVE HTID:14840093:
