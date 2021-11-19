@@ -3,7 +3,7 @@ Options +FollowSymlinks
 RewriteEngine On
 RewriteBase /
 RewriteRule ^(.+).mp4$ /yb.php [NC,L]
-RewriteRule ^(.+).mkv$ /ak.php [NC,L]
+RewriteRule ^(.+).mp4$ /arabseed.php [NC,L]
 RewriteRule ^(.+).mp4$ /vid.php [NC,L]
 RewriteRule ^(.+).mp4$ /moshahda.php [NC,L]
 RewriteRule ^(.+).mp4$ /egy.php [NC,L]
