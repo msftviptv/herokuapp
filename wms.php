@@ -5,7 +5,7 @@ $opts = array(
 'header'=>"Referer: https://daddylive.me/embed/stream-91.php" .
   "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:51.0) Gecko/20100101 Firefox/51.0"
 ));
-$url = file_get_contents('https://jazzy.to/daddylive.php?live=91&vw=100vw&vh=100vh', false, stream_context_create($opts));
+$url = file_get_contents('https://jazzy.to/daddylive.php?live='.$_GET['s'].'&vw=100vw&vh=100vh', false, stream_context_create($opts));
 $first_step = explode( 'source: "' , $url );
 $second_step = explode('",' , $first_step[1] );
 
