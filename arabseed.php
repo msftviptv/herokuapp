@@ -7,5 +7,6 @@ $second_step = explode('" type="video' , $first_step[1] );
 $user= $second_step[0];
 
 $link = $user;
-header('Location: '.$link);
+echo $link;
+//header('Location: '.$link);
 ?>
