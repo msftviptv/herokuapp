@@ -1,12 +1,10 @@
 <?php
-$url ='https://almlf.net//embed-'.$_GET['s'].".html";
-$content = file_get_contents($url);
-$first_step = explode( 'file:"' , $content );
-$second_step = explode('",label:"720p' , $first_step[1] );
 
-$user= $second_step[0];
+$ch  = curl_init();
 
-$link = $user;
-
-header('Location: '.$link);
+curl_setopt($ch, CURLOPT_URL, 'https://config.e-droid.net/srv/config.php?v=113&vname=2.0&idapp=832249&idusu=0&cod_g=&gp=1&am=0&idl=en&pa_env=1&pa=US&pn=com.syria004&fus=010100000000&aid=40739dc111358653');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_USERAGENT, 'Android Vinebre Software');
+$html = curl_exec($ch);
+echo $html;
 ?>
