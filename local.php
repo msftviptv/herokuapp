@@ -1,6 +1,6 @@
 <?php
 $array1=array("admin" => 12062021,
-"wmsAuthSign=c2VydmVyX3RpbWU9MTEvMjUvMjAyMSA4OjIxOjAyIEFNJmhhc2hfdmFsdWU9Yi9aZnBiVzdBZHBsZVcrQVFHM3d5Zz09JnZhbGlkbWludXRlcz0xMjA=.m3u8" => 12102023,
+"wmsAuthSign=c2VydmVyX3RpbWU9MTEvMjUvMjAyMSA4OjIxOjAyIEFNJmhhc2hfdmFsdWU9Yi9aZnBiVzdBZHBsZVcrQVFHM3d5Zz09JnZhbGlkbWludXRlcz0xMjA=" => 12102023,
 "grgs" => 25042022,);
 if (array_key_exists($_GET['user'],$array1))
 {
