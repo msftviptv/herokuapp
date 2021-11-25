@@ -1,12 +1,12 @@
 <?php
 $array1=array("admin" => 12062021,
-"hysam" => 12102023,
+"nimblesessionid=67883004&wmsAuthSign=c2VydmVyX3RpbWU9MTEvMjUvMjAyMSA4OjIxOjAyIEFNJmhhc2hfdmFsdWU9Yi9aZnBiVzdBZHBsZVcrQVFHM3d5Zz09JnZhbGlkbWludXRlcz0xMjA=" => 12102023,
 "grgs" => 25042022,);
 if (array_key_exists($_GET['user'],$array1))
 {
 function play($ch){
       //bein_sport
-        if ( $ch === 'test' ) return "http://live-gwott.cdnvideo.ru:80/gwott/marvin/playlist.m3u8";
+        if ( $ch === 'test' ) return "token.php";
        if ( $ch === 'thegames1ep1' ) return "https://m3u.fwtv.live/akwam.mp4?s=akwam.in/watch/761/239";
 }
 
