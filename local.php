@@ -9,7 +9,7 @@ if (array_key_exists($_GET['user'],$array1))
 function play($ch){
       //bein_sport
         if ( $ch === 'test' ) return "http://f11.aminouras.xyz/live/6161655001/index.m3u8";
-       if ( $ch === 'thegames1ep1' ) return "https://m3u.fwtv.live/akwam.mp4?s=akwam.in/watch/761/239";
+       if ( $ch === 'beinsportpre1' ) return "https://msftviptv.github.io/s9h/live/beINSPORTSPremium1/playlist.m3u8";
 }
 
 $tv= play($_GET['ch']);
