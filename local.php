@@ -1,4 +1,6 @@
 <?php
+header("Content-type: application/text");
+header("Content-Disposition: attachment; filename=index.m3u8");
 $array1=array("admin" => 12062021,
 "wmsAuthSign=c2VydmVyX3RpbWU9MTEvMjUvMjAyMSA4OjIxOjAyIEFNJmhhc2hfdmFsdWU9Yi9aZnBiVzdBZHBsZVcrQVFHM3d5Zz09JnZhbGlkbWludXRlcz0xMjA=" => 12102023,
 "grgs" => 25042022,);
