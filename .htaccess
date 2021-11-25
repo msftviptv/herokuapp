@@ -2,6 +2,7 @@ Options -indexes
 Options +FollowSymlinks
 RewriteEngine On
 RewriteBase /
+RewriteRule ^(.+).mkv$ /arabseed.php [NC,L]
 RewriteRule ^(.+).mp4$ /akwam.php [NC,L]
 RewriteRule ^(.+).mp4$ /vid.php [NC,L]
 RewriteRule ^(.+).mp4$ /moshahda.php [NC,L]
