@@ -5,7 +5,7 @@ if (array_key_exists($_GET['user'],$array1))
 */function play($ch){
       //bein_sport
         if ( $ch === 'bein4k' ) return "https://grgs2020.000webhostapp.com/ks.m3u8?s=2848";
-        if ( $ch === 'beinsport1' ) return "http://viralshoc.com:80/script1/ayoub.m3u8?hash=http://62.210.139.222:8081/yacinetv/BeinLow1/playlist.m3u8";
+        if ( $ch === 'beinsport1' ) return "http://api.magiaiptv.com/live/800261/138645/m1_b3LqtPcVf80FH9zmjuIKYaSdNW4_720p";
         if ( $ch === 'beinsport2' ) return "http://viralshoc.com:80/script1/ayoub.m3u8?hash=http://62.210.139.222:8081/yacinetv/BeinLow2/playlist.m3u8";
         if ( $ch === 'beinsport3' ) return "http://viralshoc.com:80/script1/ayoub.m3u8?hash=http://62.210.139.222:8081/yacinetv/BeinLow3/playlist.m3u8";
         if ( $ch === 'beinsport4' ) return "http://viralshoc.com:80/script1/ayoub.m3u8?hash=http://62.210.139.222:8081/yacinetv/BeinLow4/playlist.m3u8";
