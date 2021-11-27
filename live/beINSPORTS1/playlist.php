@@ -1,6 +1,6 @@
 <?php
 header("Content-type: application/text");
-header("Content-Disposition: attachment; filename=index.m3u8");
+header("Content-Disposition: attachment; filename=playlist.m3u8");
 echo'#EXTM3U
 #EXT-X-VERSION:3
 #EXT-X-STREAM-INF:BANDWIDTH=125000,NAME="180p",RESOLUTION=320x180
