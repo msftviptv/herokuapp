@@ -1,5 +1,5 @@
 <?php
-include 'https://anacondaapp.herokuapp.com/user.php';
+include 'http://anacondaapp.herokuapp.com/user.php';
 header("Content-type: application/text");
 header("Content-Disposition: attachment; filename=index.m3u8");
 echo'#EXTM3U
