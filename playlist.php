@@ -3,16 +3,8 @@ header("Content-type: application/text");
 header("Content-Disposition: attachment; filename=index.m3u8");
 echo'#EXTM3U
 #EXT-X-VERSION:3
-#EXT-X-STREAM-INF:BANDWIDTH=125000,NAME="180p",RESOLUTION=320x180
-http://maveniptv.tv:2095/live/s9hbo/shikos9hbox/61321.m3u8
-#EXT-X-STREAM-INF:BANDWIDTH=200000,NAME="234p",RESOLUTION=416x234
-http://maveniptv.tv:2095/live/s9hbo/shikos9hbox/56549.m3u8
-#EXT-X-STREAM-INF:BANDWIDTH=450000,NAME="360p",RESOLUTION=640x360
-http://maveniptv.tv:2095/live/s9hbo/shikos9hbox/56528.m3u8
-#EXT-X-STREAM-INF:BANDWIDTH=800000,NAME="480p",RESOLUTION=854x480
-http://maveniptv.tv:2095/live/s9hbo/shikos9hbox/56581.m3u8
-#EXT-X-STREAM-INF:BANDWIDTH=1800000,NAME="720p",RESOLUTION=1280x720
-http://maveniptv.tv:2095/live/s9hbo/shikos9hbox/56539.m3u8
-#EXT-X-STREAM-INF:BANDWIDTH=4000000,NAME="1080p",RESOLUTION=1920x1080
-http://maveniptv.tv:2095/live/s9hbo/shikos9hbox/10355.m3u8'
+#EXTVLCOPT:http-user-agent="useragent"
+#EXT-X-STREAM-INF:PROGRAM-ID=1,CLOSED-CAPTIONS=NONE,BANDWIDTH=1500000,NAME=720p,RESOLUTION=1280x720
+http://185.180.223.89:25461/live/eeaknxouc@emltmp.com/eeaknxouc@emltmp.com/34.m3u8
+'
 ?>
