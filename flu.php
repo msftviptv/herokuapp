@@ -5,7 +5,7 @@ $lifetime = 3600 * 3; // The link will become invalid in 3 hours.
 
 $stream = $_GET['stream']; // This script gets the stream name from a query. string (script.php?stream=bbc)
 
-$ipaddr = $_SERVER['REMOTE_ADDR']; // (v20.07) Set $ipaddr = 'no_check_ip' if you want to exclude IP address of client devices from checking.
+$ipaddr = 'no_check_ip'; // (v20.07) Set $ipaddr = 'no_check_ip' if you want to exclude IP address of client devices from checking.
 $desync = 300; // Allowed time desync between Flussonic and hosting servers in seconds.
 $starttime = time() - $desync;
 $endtime = $starttime + $lifetime;
