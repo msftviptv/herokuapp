@@ -1173,7 +1173,7 @@ $intime = gmdate("Y/m/d H:i");
 
      
 echo'<div class="alba_sports_events-event_item"  rel="'.$timestart.'">
-  <a href="http://livemsftv.blogspot.com/p/'.$TvChannelId.'.html" title="'.$Slug.'">
+  <a href="https://egygenio.page.link/'.$TvChannelId.'" title="'.$Slug.'">
     <div class="new-league-head">
     <div class="title-aria">
     <div class="title-imag">
@@ -1187,13 +1187,13 @@ echo'<div class="alba_sports_events-event_item"  rel="'.$timestart.'">
     </div>
     <div class="event_inner">
     <div class="team-aria team-first">
-    <div class="alba-team_logo"><img alt="الاتحاد السعودي " src="'."https:".$HomeTeamLogoUrl.'" /></div>
+    <div class="alba-team_logo"><img alt=" " src="'."https:".$HomeTeamLogoUrl.'" /></div>
     <div class="alba_sports_events-team_title">'.$HomeTeamName.'</div>
     </div>
     <div class="width "><p>'.($timestart > $intime ? $time : $score).
     '</p> </div>
     <div class="team-aria team-second">
-    <div class="alba-team_logo"><img alt="الشباب" src="'."https:".$AwayTeamLogoUrl.'" /></div>
+    <div class="alba-team_logo"><img alt="" src="'."https:".$AwayTeamLogoUrl.'" /></div>
     <div class="h2 alba_sports_events-team_title">'.$AwayTeamName.'</div>
     </div>
     </div>
