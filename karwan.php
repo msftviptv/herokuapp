@@ -1,8 +1,4 @@
 <?php
-header("Content-type: application/text");
-//header("Content-Disposition: attachment; filename=index.m3u8");
-
-
 
 $url ="https://ku.karwan.tv/live/".$_GET['ch'].".php";
 
