@@ -1,6 +1,6 @@
 <?php
 header("Content-type: application/text");
-header("Content-Disposition: attachment; filename=index.m3u8");
+//header("Content-Disposition: attachment; filename=index.m3u8");
 
 
 
