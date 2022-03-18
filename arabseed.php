@@ -1,7 +1,7 @@
 <?php
 //header("Content-type: application/text");
 //header("Content-Disposition: attachment; filename=index.m3u8");
-$url ="https://m.arabseed.me/embed-".$_GET['s'].".html";
+$url ="https://m.seeeed.xyz/embed-".$_GET['s'].".html";
 $content = file_get_contents($url);
 $first_step = explode( 'source src="' , $content );
 $second_step = explode('" type="video' , $first_step[1] );
