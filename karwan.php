@@ -12,7 +12,8 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 3);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 $html = curl_exec($ch);
 curl_close($ch);
-$first_step = explode( 'source src="' , $html );
+$content = file_get_contents($html);
+$first_step = explode( 'source src="' , $content );
 $second_step = explode('" type="application' , $first_step[1] );
 
 $user= $second_step[0];
