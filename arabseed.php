@@ -23,5 +23,6 @@ preg_match_all('/(http.*mp4.*")/U', $link,$matches, PREG_PATTERN_ORDER);
 
 $stream_m3u = $matches[1][0];
 $stream_m3u = str_replace('"', '', $stream_m3u);
-header ("location: ".$stream_m3u) ;
+echo $stream_m3u
+//header ("location: ".$stream_m3u) ;
 ?>
