@@ -19,7 +19,7 @@ function get_data($url) {
 $link = get_data("https://m.seeeed.xyz/embed-j6n7bmb7br7f.html");
 
 
-preg_match_all('/(http.*mp4)/U', $link,$matches, PREG_PATTERN_ORDER);
+preg_match_all('/(http.*mp4)/', $link,$matches, PREG_PATTERN_ORDER);
 
 $stream_m3u = $matches[1][0];
 $stream_m3u = str_replace('"', '', $stream_m3u);
