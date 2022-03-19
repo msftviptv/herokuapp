@@ -21,8 +21,6 @@ $first_step = explode( 'source src="' , $content );
 $second_step = explode('" type="application' , $first_step[1] );
 
 $user= $second_step[0];
-
-$link = $user;
 //header('Location: '.$link);
-echo $link;
+echo $data;
 ?>
