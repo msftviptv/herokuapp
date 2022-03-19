@@ -16,7 +16,7 @@ function get_data($url) {
     return $data;
 }
 
-$link = get_data("https://m.seeeed.xyz/embed-".$get_url.".html");
+$link = get_data("https://m.seeeed.xyz/embed-j6n7bmb7br7f.html");
 
 
 preg_match_all('/(http.*mp4)/U', $link,$matches, PREG_PATTERN_ORDER);
