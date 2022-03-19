@@ -1,6 +1,6 @@
-<?php
-//header("Content-type: application/text");
-//header("Content-Disposition: attachment; filename=index.m3u8");
+<? 
+$get_url = isset($_GET["ch"]) && !empty($_GET["ch"]) ? $_GET["ch"] : "aso-sport";
+ini_set("user_agent", "Mozilla/5.0 (Linux; Android 10; SNE-LX1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36");
 function get_data($url) {
     $ch = curl_init();
     $timeout = 2;
@@ -16,11 +16,12 @@ function get_data($url) {
     return $data;
 }
 
-$link = get_data("https://ku.karwan.tv/live/".$_GET['ch'].".php");
-$first_step = explode( 'source src="' , $content );
-$second_step = explode('" type="application' , $first_step[1] );
+$link = get_data("https://ku.karwan.tv/live/".$get_url.".php");
 
-$user= $second_step[0];
-//header('Location: '.$link);
-echo $data;
+
+preg_match_all('/(http.*m3u8.*")/U', $link,$matches, PREG_PATTERN_ORDER);
+
+$stream_m3u = $matches[1][0];
+$stream_m3u = str_replace('"', '', $stream_m3u);
+header ("location: ".$stream_m3u) ;
 ?>
