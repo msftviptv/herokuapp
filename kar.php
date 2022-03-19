@@ -11,9 +11,17 @@ curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 3);     
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 $html = curl_exec($ch);
+$content = file_get_contents($html);
+$first_step = explode( 'source src="' , $content );
+$second_step = explode('" type="video' , $first_step[1] );
+
+$user= $second_step[0];
+
+$link = $user;
+
 curl_close($ch);
 
 //header('Location: '.$link);
 
-echo $html;
+echo $link;
 ?>
