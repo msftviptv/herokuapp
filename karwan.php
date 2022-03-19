@@ -16,7 +16,7 @@ function get_data($url) {
     return $data;
 }
 
-$link = get_data("https://ku.karwan.tv/live/".$get_url.".php");
+$link = get_data("https://ku.karwan.tv/live/".$_GET['ch'].".php");
 $first_step = explode( 'source src="' , $content );
 $second_step = explode('" type="application' , $first_step[1] );
 
