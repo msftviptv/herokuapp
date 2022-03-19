@@ -20,5 +20,5 @@ $user= $second_step[0];
 $link = $user;
 //header('Location: '.$link);
 
-echo $link;
+echo $html;
 ?>
