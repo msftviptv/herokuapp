@@ -7,6 +7,6 @@ $second_step = explode("'," , $first_step[1] );
 $user= $second_step[0];
 
 $link = $user;
-echo $link
-//header('Location: '.$link);
+//echo $link
+header('Location: '.$link);
 ?>
