@@ -2,101 +2,111 @@
 <html dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>جدول المباريات</title>
+    <title>جدول مباريات اليوم</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Changa:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* سأضع هنا ملخص الستاين الذي أرسلته لضمان عمل الشكل */
+        /* التنسيق الخاص بالجدول */
         body { background:#e0e0e0; font-family:'Changa', sans-serif; margin:0; padding:10px; }
-        .alba_sports_events-event_item { text-align: center; width: 100%; display: block; overflow: hidden; margin: 0 auto 15px; position: relative; max-width: 800px;}
-        .event_inner { display: flex; align-items: center; justify-content: space-between; background: #736f6f; height: 60px; padding: 0 10px; position: relative; }
-        .team-aria { flex: 1; background: #000; color: #fff; height: 45px; display: flex; align-items: center; justify-content: center; position: relative; border: 2px solid #fff;}
-        .width { width: 120px; color: #fff; font-size: 24px; font-weight: bold; background: #444; height: 100%; display: flex; align-items: center; justify-content: center;}
-        .alba-team_logo { width: 50px; height: 50px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 10px; }
-        .alba-team_logo img { max-height: 40px; }
-        .league-title { background: #ddd; padding: 5px 15px; display: inline-block; border-radius: 10px 10px 0 0; font-size: 12px; margin-bottom: -2px; }
-        .events-info-aria { background: #ddd; padding: 5px; border-radius: 0 0 15px 15px; display: flex; justify-content: space-around; font-size: 12px; }
-        .loading { text-align: center; padding: 50px; font-size: 20px; }
+        .alba_sports_events-event_item { text-align: center; width: 100%; display: block; overflow: hidden; margin: 0 auto 15px; max-width: 800px; position: relative; }
+        .event_inner { display: flex; align-items: center; justify-content: space-between; background: #736f6f; height: 52px; padding: 0 10px; position: relative; }
+        .team-aria { flex: 1; background: #000; color: #fff; height: 40px; display: flex; align-items: center; justify-content: center; border-top: 3px solid #fff; position: relative; }
+        .team-first { transform: skew(-45deg); border-left: 4px solid #fff; }
+        .team-second { transform: skew(45deg); border-right: 4px solid #fff; }
+        .team-aria span { transform: skew(var(--skew-fix)); font-weight: bold; font-size: 14px; }
+        .team-first span { --skew-fix: 45deg; }
+        .team-second span { --skew-fix: -45deg; }
+        .width { width: 150px; color: #fff; font-size: 24px; font-weight: bold; background: #444; height: 100%; display: flex; align-items: center; justify-content: center; z-index: 2; }
+        .alba-team_logo { width: 60px; height: 60px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: absolute; top: -10px; border: 2px solid #122c48; z-index: 5; }
+        .team-first .alba-team_logo { right: -25px; transform: skew(45deg); }
+        .team-second .alba-team_logo { left: -25px; transform: skew(-45deg); }
+        .alba-team_logo img { max-height: 40px; width: auto; }
+        .league-title { background: #ddd; padding: 2px 15px; display: inline-block; border-radius: 12px 12px 0 0; font-size: 13px; border-top: 2px solid #383838; }
+        .events-info-aria { background: #ddd; padding: 5px; border-radius: 0 0 20px 20px; display: flex; justify-content: space-around; font-size: 12.5px; color: #000; }
+        .loading { text-align: center; padding: 50px; font-size: 18px; color: #666; }
+        .non-mauch { text-align: center; padding: 40px; background: #fff; color: #999; border-radius: 10px; }
         a { text-decoration: none; color: inherit; }
+        @media (max-width: 600px) {
+            .width { width: 100px; font-size: 18px; }
+            .team-aria span { font-size: 11px; }
+        }
     </style>
 </head>
 <body>
 
-<div id="matches-container">
-    <div class="loading">جاري تحميل المباريات...</div>
+<div id="matches-today">
+    <div class="loading">جاري جلب مباريات اليوم...</div>
 </div>
 
 <script>
-async function fetchMatches() {
-    // الرابط الذي كنت تستخدمه في PHP
-    const targetUrl = "https://www.filgoal.com/matches/ajaxlist?date=" + new Date().toISOString().split('T')[0];
-    
-    // نستخدم البروكسي الخاص بك لتخطي حماية CORS
-    const proxy = "https://blue-paper-3226.03ab59a70f.workers.dev/?url=";
+async function loadMatches() {
+    // الحصول على تاريخ اليوم بتنسيق YYYY/MM/DD
+    const today = new Date();
+    const dateStr = today.getFullYear() + '/' + 
+                    String(today.getMonth() + 1).padStart(2, '0') + '/' + 
+                    String(today.getDate()).padStart(2, '0');
+
+    const apiUrl = `https://www.filgoal.com/matches/ajaxlist?date=${dateStr}`;
 
     try {
-        const response = await fetch(proxy + encodeURIComponent(targetUrl));
+        const response = await fetch(apiUrl);
+        if (!response.ok) throw new Error('Network response was not ok');
         const data = await response.json();
-        
-        const container = document.getElementById('matches-container');
-        container.innerHTML = ''; // مسح كلمة "جاري التحميل"
 
-        if (data.length === 0) {
-            container.innerHTML = '<div class="non-mauch">لا توجد مباريات اليوم</div>';
+        const container = document.getElementById('matches-today');
+        container.innerHTML = ''; // مسح رسالة التحميل
+
+        if (!data || data.length === 0) {
+            container.innerHTML = '<div class="non-mauch">لا توجد مباريات مجدولة لليوم</div>';
             return;
         }
 
         data.forEach(match => {
-            // معالجة الوقت (تحويل من صيغة /Date(timestamp)/)
-            const timestamp = parseInt(match.Date.replace(/\/Date\((\0-9]+)\)\//, '$1'));
-            const matchDate = new Date(timestamp);
-            const timeString = matchDate.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', hour12: true });
+            // معالجة التاريخ والوقت
+            const timestamp = parseInt(match.Date.replace(/\/Date\((\d+)\)\//, '$1'));
+            const matchTime = new Date(timestamp);
+            const timeStr = matchTime.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', hour12: true });
 
-            // التحقق من حالة المباراة (هل بدأت أم لا)
-            const now = new Date();
-            const isStarted = now > matchDate;
-            const scoreOrTime = isStarted ? `${match.HomeScore} - ${match.AwayScore}` : timeString;
+            // تفاصيل التغطية (القناة والمعلق)
+            const tv = (match.TvCoverage && match.TvCoverage.length > 0) ? match.TvCoverage[0] : { TvChannelName: "غير متوفر", CommenterName: "غير متوفر", TvChannelId: "0" };
 
-            // جلب بيانات القناة والمعلق (أول عنصر في المصفوفة)
-            const coverage = match.TvCoverage && match.TvCoverage.length > 0 ? match.TvCoverage[0] : { TvChannelName: "غير مدرج", CommenterName: "غير مدرج", TvChannelId: "0" };
-
-            // بناء عنصر المباراة
-            const matchHTML = `
+            // بناء العناصر
+            const matchCard = `
                 <div class="alba_sports_events-event_item">
-                    <a href="https://egygenio.page.link/${coverage.TvChannelId}">
+                    <a href="https://egygenio.page.link/${tv.TvChannelId}">
                         <div class="new-league-head">
                             <h6 class="league-title">${match.ChampionshipName}</h6>
                         </div>
                         <div class="event_inner">
-                            <div class="team-aria">
-                                <div class="alba-team_logo"><img src="https:${match.HomeTeamLogoUrl}" /></div>
+                            <div class="team-aria team-first">
+                                <div class="alba-team_logo"><img src="https:${match.HomeTeamLogoUrl}" alt=""></div>
                                 <span>${match.HomeTeamName}</span>
                             </div>
-                            <div class="width">${scoreOrTime}</div>
-                            <div class="team-aria">
+                            <div class="width">${match.HomeScore !== null ? match.HomeScore + ' - ' + match.AwayScore : timeStr}</div>
+                            <div class="team-aria team-second">
                                 <span>${match.AwayTeamName}</span>
-                                <div class="alba-team_logo"><img src="https:${match.AwayTeamLogoUrl}" /></div>
+                                <div class="alba-team_logo"><img src="https:${match.AwayTeamLogoUrl}" alt=""></div>
                             </div>
                         </div>
                         <div class="events-info-aria">
-                            <span>🎤 ${coverage.CommenterName}</span>
-                            <span>⏰ ${match.MatchStatusName || 'لم تبدأ'}</span>
-                            <span>📺 ${coverage.TvChannelName}</span>
+                            <span>🎙️ ${tv.CommenterName}</span>
+                            <span>🕒 ${match.MatchStatusName}</span>
+                            <span>📺 ${tv.TvChannelName}</span>
                         </div>
                     </a>
                 </div>
             `;
-            container.innerHTML += matchHTML;
+            container.innerHTML += matchCard;
         });
 
     } catch (error) {
-        console.error("Error fetching matches:", error);
-        document.getElementById('matches-container').innerHTML = '<div class="non-mauch">حدث خطأ أثناء جلب البيانات</div>';
+        console.error('Fetch error:', error);
+        document.getElementById('matches-today').innerHTML = '<div class="non-mauch">تعذر تحميل البيانات. تأكد من إعدادات الـ CORS.</div>';
     }
 }
 
-// تشغيل الدالة عند تحميل الصفحة
-window.onload = fetchMatches;
+// تنفيذ الدالة فور تحميل الصفحة
+window.onload = loadMatches;
 </script>
 
 </body>
